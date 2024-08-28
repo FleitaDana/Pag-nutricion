@@ -110,7 +110,6 @@ td {
     align-items: left;
     margin: 0 1%;
     color: white;
-    /* Prevents the arrows from growing or shrinking */
 }
 
 .recetas li a {
@@ -177,12 +176,15 @@ td {
     max-width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: left;
 }
 
 .container_contacto label {
     font-size: 1.2rem;
+}
+
+.container_contacto input {
+    align-self: center;
 }
 
 input[type=text],
@@ -195,7 +197,7 @@ textarea {
     box-sizing: border-box;
     margin-top: 2%;
     margin-bottom: 2%;
-    resize: vertical
+    resize: vertical;
 }
 
 input[type=submit] {
@@ -213,13 +215,9 @@ input[type=submit]:hover {
 
 .fondo_contacto {
     background-image: url('../Img/fondo.jpg');
-    /* Ruta a la imagen de fondo */
     background-size: cover;
-    /* Asegura que la imagen cubra todo el contenedor */
     background-position: center;
-    /* Centra la imagen en el contenedor */
     background-repeat: no-repeat;
-    /* Evita que la imagen se repita */
     background-attachment: fixed;
     /* Mantiene la imagen fija en su lugar cuando se desplaza el contenido */
 }
@@ -291,9 +289,7 @@ li {
 
 a {
     text-decoration: none;
-    /* Elimina el subrayado */
     color: inherit;
-    /* Inherit toma el color del elemento padre, que usualmente es el texto en color normal */
 }
 
 
@@ -315,10 +311,4 @@ a {
 .receta-contenido {
     flex: 1;
     /* Hace que el contenido ocupe el espacio restante */
-}
-
-.arrow-left {
-    margin: 0 1%;
-    flex: 0 0 auto;
-    /* Prevents the arrows from growing or shrinking */
 }
