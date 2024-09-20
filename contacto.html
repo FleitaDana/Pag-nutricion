@@ -33,18 +33,23 @@
         <label for="lastname">Apellido</label>
         <input type="text" id="lastname" name="apellido" placeholder="Escribe tu apellido..">
 
+        <label for="phone">Teléfono</label>
+        <input type="tel" id="phone" name="telefono" placeholder="Escribe tu número de teléfono...">
+
         <label for="service">Por cual servicio quieres contactarme?</label>
         <select id="service" name="consulta">
-          <option value="Plan alimenticio">Plan alimenticio</option>
-          <option value="Seguimiento online">Seguimiento online</option>
+          <option value="Plan alimenticio">Consultas Personalizadas de Nutrición</option>
+          <option value="Plan alimenticio">Nutrición Deportiva</option>
+          <option value="Seguimiento online">Asesoramiento en Alimentación Vegetariana o Vegana</option>
           <option value="Quiero un turno">Quiero un turno</option>
         </select>
 
         <label for="consultation">Deja tu consulta</label>
-        <textarea id="consultation" name="consulta" placeholder="Escribe tu consulta..."
-          style="height:200px"></textarea>
+        <textarea id="consultation" name="consulta" placeholder="Escribe tu consulta..."></textarea>
 
-        <input type="submit" value="Submit">
+        <div class="boton-enviar">
+          <input type="submit" value="Enviar">
+        </div>
 
       </form>
     </div>

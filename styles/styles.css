@@ -183,11 +183,8 @@ td {
     font-size: 1.2rem;
 }
 
-.container_contacto input {
-    align-self: center;
-}
-
 input[type=text],
+input[type=tel], 
 select,
 textarea {
     width: 100%;
@@ -198,6 +195,10 @@ textarea {
     margin-top: 2%;
     margin-bottom: 2%;
     resize: vertical;
+}
+
+textarea {
+    height: 7rem; /* Cambia este valor al tamaño que prefieras */
 }
 
 input[type=submit] {
@@ -211,6 +212,12 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #37043b;
+}
+
+.boton-enviar {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Asegura que el contenedor adicional ocupe el ancho completo */
 }
 
 .fondo_contacto {
@@ -294,21 +301,122 @@ a {
 
 
 /* Estilo receta */
+
 .receta-container {
     display: flex;
-    align-items: flex-start;
     flex-direction: row;
-    text-align: left;
-    margin-left: 0;
-    padding: 0 1% 0 0;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 40px;
 }
 
 .receta-img {
-    width: 25.7rem;
-    height: 100%;
+    max-width: 25%;
+    border-radius: 10px;
 }
 
 .receta-contenido {
-    flex: 1;
-    /* Hace que el contenido ocupe el espacio restante */
+    max-width: 70%;
+    text-align: left;
+}
+
+
+
+.receta-contenido h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.receta-contenido ul,
+.receta-contenido ol {
+    padding-left: 20px;
+}
+
+.receta-contenido ul li,
+.receta-contenido ol li {
+    margin-bottom: 10px;
+}
+
+
+
+
+/* Ajustes generales para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    nav ul {
+        flex-direction: row;
+        height: auto;
+        height: 3rem;
+    }
+
+    .recetas-container {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .recetas-box {
+        width: 60%;
+        margin-bottom: 1rem;
+    }
+
+    .carrusel-images{
+        height: 20rem;
+    }
+
+    .carrusel-images img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .receta-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .container_contacto{
+        max-width: 80%;
+    }
+
+    .receta-img {
+        max-width: 30%;
+    }
+}
+
+/* Ajustes para pantallas intermedias */
+@media (min-width: 769px) and (max-width: 1028px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .recetas-box {
+        width: 45%;
+    }
+
+    .carrusel-images img {
+        width: 60%;
+    }
+
+    .container_contacto{
+        max-width: 80%;
+        margin-bottom: 1%;
+    }
+
+    .receta-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .receta-img {
+        max-width: 30%;
+    }
 }
