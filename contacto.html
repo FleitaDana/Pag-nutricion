@@ -25,16 +25,18 @@
     <h1>Contactame</h1>
 
     <div class="container_contacto">
-      <form action="action_page.php">
+      <form id="formularioContacto" action="action_page.php">
 
         <label for="name">Nombre</label>
-        <input type="text" id="name" name="nombre" placeholder="Escribe nombre...">
+        <input type="text" id="name" name="nombre" value="Escribe tu nombre..." onFocus="vaciar(this)">
 
         <label for="lastname">Apellido</label>
-        <input type="text" id="lastname" name="apellido" placeholder="Escribe tu apellido..">
+        <input type="text" id="lastname" name="apellido" value="Escribe tu apellido.." onFocus="vaciar(this)">
 
         <label for="phone">Teléfono</label>
-        <input type="tel" id="phone" name="telefono" placeholder="Escribe tu número de teléfono...">
+        <input type="tel" id="phone" name="telefono" value="Escribe tu número de teléfono..." onFocus="vaciar(this)">
+
+        <span id="message" class="validar-telefono" style="display: none;">⚠️ Solo números permitidos.</span>
 
         <label for="service">Por cual servicio quieres contactarme?</label>
         <select id="service" name="consulta">
@@ -45,7 +47,7 @@
         </select>
 
         <label for="consultation">Deja tu consulta</label>
-        <textarea id="consultation" name="consulta" placeholder="Escribe tu consulta..."></textarea>
+        <textarea id="consultation" name="consulta" onFocus="vaciar(this)">Deja tu consulta aquí...</textarea>
 
         <div class="boton-enviar">
           <input type="submit" value="Enviar">
@@ -67,6 +69,18 @@
     </div>
     <p>&copy; 2024 Nutricionista Lara. Todos los derechos reservados.</p>
   </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Formulario enviado con éxito</p>
+      <button id="modalOk">OK</button>
+    </div>
+  </div>
+
+  <script src="js/validarTelefono.js"></script>
+  <script src="js/vaciarCampos.js"></script>
+  <script src="js/botonEnviar.js"></script>
 </body>
 
 </html>

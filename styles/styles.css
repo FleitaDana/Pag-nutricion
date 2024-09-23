@@ -107,7 +107,6 @@ td {
 
 .recetas a {
     display: flex;
-    align-items: left;
     margin: 0 1%;
     color: white;
 }
@@ -155,6 +154,8 @@ td {
     padding: 1%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 12rem; /* Cambia este valor al ancho fijo que desees */
+    flex-shrink: 0; /* Asegúrate de que no se reduzca el ancho en contenedores flexibles */
 }
 
 .recetas-box img {
@@ -184,7 +185,7 @@ td {
 }
 
 input[type=text],
-input[type=tel], 
+input[type=tel],
 select,
 textarea {
     width: 100%;
@@ -198,7 +199,8 @@ textarea {
 }
 
 textarea {
-    height: 7rem; /* Cambia este valor al tamaño que prefieras */
+    height: 7rem;
+    /* Cambia este valor al tamaño que prefieras */
 }
 
 input[type=submit] {
@@ -216,8 +218,10 @@ input[type=submit]:hover {
 
 .boton-enviar {
     display: flex;
-    justify-content: center; /* Centra el botón horizontalmente */
-    width: 100%; /* Asegura que el contenedor adicional ocupe el ancho completo */
+    justify-content: center;
+    /* Centra el botón horizontalmente */
+    width: 100%;
+    /* Asegura que el contenedor adicional ocupe el ancho completo */
 }
 
 .fondo_contacto {
@@ -244,38 +248,23 @@ input[type=submit]:hover {
     /* Utiliza Flexbox para alinear las imágenes en una fila horizontal */
     width: 100%;
     /* El ancho del contenedor del carrusel es 100% del contenedor padre */
-    animation: scroll 30s linear infinite;
-    /* Aplica la animación 'scroll' que dura 30 segundos, se ejecuta de manera lineal y se repite infinitamente */
+    transition: transform 0.8s ease-in-out;
+    /* Para una transicion suave */
 }
 
-.carrusel-images {
+.carrusel-imagenes {
     display: flex;
     /* Utiliza Flexbox para alinear las imágenes en una fila horizontal dentro del contenedor */
-    width: 200%;
-    /* El ancho total es el doble del contenedor visible para permitir el bucle infinito */
     height: 30rem;
 }
 
-.carrusel-images img {
+.carrusel-imagenes img {
     width: 20%;
     /* Cada imagen ocupa el 20% del ancho del contenedor 'carousel-images', de modo que se muestran 5 imágenes a la vez */
     height: auto;
     /* Mantiene la proporción de la imagen, ajustando la altura automáticamente */
     object-fit: cover;
     /* Asegura que la imagen cubra completamente su contenedor, recortando si es necesario */
-}
-
-/* Animación para el desplazamiento infinito */
-@keyframes scroll {
-    from {
-        transform: translateX(0);
-        /* Comienza desde la posición inicial, sin desplazamiento horizontal */
-    }
-
-    to {
-        transform: translateX(-100%);
-        /* Desplaza el contenido hacia la izquierda en un 100% del ancho del contenedor visible */
-    }
 }
 
 
@@ -307,8 +296,8 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    gap: 40px;
+    padding: 1rem;
+    gap: 1rem;
 }
 
 .receta-img {
@@ -324,27 +313,84 @@ a {
 
 
 .receta-contenido h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .receta-contenido ul,
 .receta-contenido ol {
-    padding-left: 20px;
+    padding-left: 1rem;
 }
 
 .receta-contenido ul li,
 .receta-contenido ol li {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
+/* Estilos para el modal */
+.modal {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    /* Para estar por encima del contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+}
 
+.modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 2rem;
+    border: 0.5rem solid #76097e;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 15rem;
+    text-align: center;
+}
 
+.close {
+    color: #ff85e4;
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #5d1b4e;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalOk:hover {
+    background-color: #5d1b4e;
+    color: #ffffff;
+}
+
+/* Estilos para el mensaje de validar número de teléfono */
+.validar-telefono {
+    color: white;
+    background-color: #7e0e0e;
+    padding: 0.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    /* Para que se comporte como una etiqueta */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Sombra para darle profundidad */
+    width: 30%;
+}
 
 /* Ajustes generales para pantallas más pequeñas (móviles) */
 @media (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: 1rem;
     }
 
     h1 {
@@ -368,11 +414,11 @@ a {
         margin-bottom: 1rem;
     }
 
-    .carrusel-images{
+    .carrusel-imagenes {
         height: 20rem;
     }
 
-    .carrusel-images img {
+    .carrusel-imagenes img {
         width: 100%;
         height: 100%;
     }
@@ -382,7 +428,7 @@ a {
         gap: 0;
     }
 
-    .container_contacto{
+    .container_contacto {
         max-width: 80%;
     }
 
@@ -391,21 +437,22 @@ a {
     }
 }
 
+
 /* Ajustes para pantallas intermedias */
 @media (min-width: 769px) and (max-width: 1028px) {
     h1 {
         font-size: 3rem;
     }
-    
+
     .recetas-box {
         width: 45%;
     }
 
-    .carrusel-images img {
+    .carrusel-imagenes img {
         width: 60%;
     }
 
-    .container_contacto{
+    .container_contacto {
         max-width: 80%;
         margin-bottom: 1%;
     }
