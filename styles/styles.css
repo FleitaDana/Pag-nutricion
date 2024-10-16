@@ -372,19 +372,19 @@ a {
     color: #ffffff;
 }
 
-/* Estilos para el mensaje de validar número de teléfono */
-.validar-telefono {
+/* Estilos para el mensaje de validar datos del form */
+.validar-datos {
     color: white;
     background-color: #7e0e0e;
     padding: 0.2rem;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     display: inline-block;
     /* Para que se comporte como una etiqueta */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     /* Sombra para darle profundidad */
-    width: 30%;
+    width: 50%;
 }
 
 /* Ajustes generales para pantallas más pequeñas (móviles) */
