@@ -1,3 +1,4 @@
+/*Implementacion del plugin jQuey Validation */
 $(document).ready(function() {
     $("#formularioContacto").validate({
         rules: {

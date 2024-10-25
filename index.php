@@ -1,3 +1,22 @@
+<?php // Consulta para obtener los servicios
+include 'php/conexion.php'; 
+
+$sql = "SELECT tipo FROM Servicio"; // Cambia 'tipo' si tu columna tiene otro nombre
+$result = $conn->query($sql);
+
+// Crear un array para almacenar los servicios
+$servicios = [];
+if ($result->num_rows > 0) {
+    // Almacenar cada fila en el array
+    while ($row = $result->fetch_assoc()) {
+        $servicios[] = $row['tipo'];
+    }
+} else {
+    echo "No se encontraron servicios.";
+}
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +26,6 @@
     <title>Nutricionista Lara</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
 </head>
 
 <body>
@@ -15,8 +33,8 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Sobre mí</a></li>
-                <li><a href="recetas.html">Recetas</a></li>
+                <li><a href="index.php">Sobre mí</a></li>
+                <li><a href="recetas.php">Recetas</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
@@ -47,41 +65,36 @@
 
         <section class="sobreMi">
             <div class="cover-text">
-                <h3>Apasionada por la salud y el bienestar, me dedico a ayudar a las personas a alcanzar sus
-                    objetivos
+                <h3>Apasionada por la salud y el bienestar, me dedico a ayudar a las personas a alcanzar sus objetivos
                     nutricionales a través de una alimentación equilibrada y personalizada.</h3>
             </div>
         </section>
 
-
         <!-- Sección Servicios -->
-
         <section class="servicios">
             <h2>Descubre Mis Servicios</h2>
             <table>
-                <tr>
-                    <td>
-                        <h3>Consultas Personalizadas de Nutrición</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Nutrición Deportiva</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Asesoramiento en Alimentación Vegetariana o Vegana</h3>
-                    </td>
-                </tr>
+                <?php if (!empty($servicios)): ?>
+                    <?php foreach ($servicios as $servicio): ?>
+                        <tr>
+                            <td>
+                                <h3><?php echo htmlspecialchars($servicio); ?></h3>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td>
+                            <h3>No hay servicios disponibles.</h3>
+                        </td>
+                    </tr>
+                <?php endif; ?>
             </table>
         </section>
-
 
     </main>
 
     <footer>
-
         <p>Contáctame:</p>
         <div class="iconos-wpp-ins">
             <a href="https://wa.me/1234567890" target="_blank" class="social-icon">
