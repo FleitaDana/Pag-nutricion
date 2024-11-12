@@ -1,3 +1,45 @@
+<?php
+// Incluir el archivo de conexión a la base de datos
+include 'php/conexion.php';
+
+// Verificar si el formulario ha sido enviado mediante el método POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario y sanitizarlos
+    $nombre = $conn->real_escape_string($_POST['nombre']);
+    $apellido = $conn->real_escape_string($_POST['apellido']);
+    $telefono = $conn->real_escape_string($_POST['telefono']);
+    $consulta = $conn->real_escape_string($_POST['consulta']);
+    $servicio = (int) $_POST['servicio']; // Este es el ID del servicio seleccionado
+
+    // Sentencia SQL para insertar los datos en la tabla `Consulta`
+    $sql = "INSERT INTO Consulta (nombre, apellido, telefono, servicio_id_servicio, mensaje_consulta) 
+            VALUES ('$nombre', '$apellido', '$telefono', '$servicio', '$consulta')";
+
+    // Ejecutar la consulta
+    if ($conn->query($sql) === TRUE) {
+        // Si la inserción es exitosa, activamos el modal
+        echo "<script>document.getElementById('modal').style.display = 'block';</script>";
+    } else {
+        // Si hay un error, muestra el error
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+}
+
+// Consultar los servicios desde la base de datos
+$servicios = [];
+$sql_servicios = "SELECT id_servicio, tipo FROM Servicio";
+$result = $conn->query($sql_servicios);
+if ($result->num_rows > 0) {
+    // Guardar los servicios en un arreglo
+    while ($row = $result->fetch_assoc()) {
+        $servicios[] = $row;
+}
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +53,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 </head>
 
-<body class="fondo_contacto">
+<body class="fondo-contacto">
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Sobre mí</a></li>
-        <li><a href="recetas.html">Recetas</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.php">Sobre mí</a></li>
+        <li><a href="recetas.php">Recetas</a></li>
+        <li><a href="contacto.php">Contacto</a></li>
+        <li><a href="login.php">Panel de Administración</a></li>
       </ul>
     </nav>
   </header>
@@ -27,7 +70,7 @@
     <h1>Contactame</h1>
 
     <div class="container_contacto">
-      <form id="formularioContacto" action="action_page.php">
+    <form id="formularioContacto" action="contacto.php" method="post">
 
         <label for="name">Nombre</label>
         <input type="text" id="name" name="nombre" value="Escribe tu nombre..." onFocus="vaciar(this)">
@@ -43,11 +86,13 @@
         <span id="message" class="validar-datos" style="display: none;">⚠️ Solo números permitidos.</span>
 
         <label for="service">Por cual servicio quieres contactarme?</label>
-        <select id="service" name="consulta">
-          <option value="Plan alimenticio">Consultas Personalizadas de Nutrición</option>
-          <option value="Plan alimenticio">Nutrición Deportiva</option>
-          <option value="Seguimiento online">Asesoramiento en Alimentación Vegetariana o Vegana</option>
-          <option value="Quiero un turno">Quiero un turno</option>
+        <select id="service" name="servicio">
+            <?php
+            // Mostrar los servicios de la base de datos en el select
+            foreach ($servicios as $servicio) {
+                echo "<option value='{$servicio['id_servicio']}'>{$servicio['tipo']}</option>";
+            }
+            ?>
         </select>
 
         <label for="consultation">Deja tu consulta</label>

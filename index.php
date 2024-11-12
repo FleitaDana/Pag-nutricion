@@ -1,13 +1,26 @@
-<?php // Consulta para obtener los servicios
+<?php 
 include 'php/conexion.php'; 
 
-$sql = "SELECT tipo FROM Servicio"; // Cambia 'tipo' si tu columna tiene otro nombre
+// Query to get the presentation text
+$sql = "SELECT presentacion FROM Usuario WHERE id_usuario = 1"; // Replace 1 with the appropriate user ID if needed
 $result = $conn->query($sql);
 
-// Crear un array para almacenar los servicios
+// Check if the query returned any result
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $presentacion = $row['presentacion'];
+} else {
+    $presentacion = "No se encontró presentación."; // Default message if no presentation is found
+}
+
+
+$sql = "SELECT tipo FROM Servicio"; 
+$result = $conn->query($sql);
+
+// Creamos un array para almacenar los servicios
 $servicios = [];
 if ($result->num_rows > 0) {
-    // Almacenar cada fila en el array
+    // Almacenamos cada fila en el array
     while ($row = $result->fetch_assoc()) {
         $servicios[] = $row['tipo'];
     }
@@ -35,16 +48,18 @@ $conn->close();
             <ul>
                 <li><a href="index.php">Sobre mí</a></li>
                 <li><a href="recetas.php">Recetas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="login.php">Panel de Administración</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <!-- Sección Portada -->
-        <h1>¡Hola, soy ...!</h1>
+        <h1>¡Hola, soy Lara</h1>
         <h2>Nutricionista Graduada</h2>
 
+        <!-- Sección Carrusel -->
         <section class="carrusel">
             <div class="carrusel-container">
                 <div class="carrusel-imagenes">
@@ -64,10 +79,10 @@ $conn->close();
         </section>
 
         <section class="sobreMi">
-            <div class="cover-text">
-                <h3>Apasionada por la salud y el bienestar, me dedico a ayudar a las personas a alcanzar sus objetivos
-                    nutricionales a través de una alimentación equilibrada y personalizada.</h3>
-            </div>
+        <div class="cover-text">
+        <!-- Display the fetched 'presentacion' -->
+        <h3><?php echo htmlspecialchars($presentacion); ?></h3>
+    </div>
         </section>
 
         <!-- Sección Servicios -->
@@ -75,7 +90,7 @@ $conn->close();
             <h2>Descubre Mis Servicios</h2>
             <table>
                 <?php if (!empty($servicios)): ?>
-                    <?php foreach ($servicios as $servicio): ?>
+                    <?php foreach ($servicios as $servicio): ?> 
                         <tr>
                             <td>
                                 <h3><?php echo htmlspecialchars($servicio); ?></h3>
@@ -110,5 +125,6 @@ $conn->close();
     <script src="js/carrusel.js"></script>
 
 </body>
+
 
 </html>

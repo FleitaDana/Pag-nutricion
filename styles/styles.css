@@ -73,13 +73,13 @@ nav ul li a:hover {
 }
 
 
-table,
+.servicios table,
 td {
     border: 10px solid white;
     border-collapse: collapse;
 }
 
-td {
+.servicios td {
     background-color: #ac906d;
     border-radius: 20px;
     padding-left: 1%;
@@ -135,11 +135,12 @@ td {
     text-decoration: none;
 }
 
-/* Estilos Recetas*/
+/* Estilos Recetas */
 .recetas-container {
     display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si es necesario */
     justify-content: space-between;
-    gap: 2rem;
+    gap: 2rem; /* Espaciado entre los elementos */
     padding: 0 2% 2% 2%;
     margin-top: 0;
     margin-left: 2%;
@@ -153,13 +154,13 @@ td {
     padding: 1%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 12rem; /* Cambia este valor al ancho fijo que desees */
-    flex-shrink: 0; /* Asegúrate de que no se reduzca el ancho en contenedores flexibles */
+    max-width: 12rem;         /* Limitar el ancho máximo */
+    flex-shrink: 0;           /* Evitar que se reduzca */
 }
 
 .recetas-box img {
-    max-width: 12rem;
-    height: 12rem;
+    max-width: 100%;          /* Asegura que la imagen se ajuste al contenedor */
+    height: 15rem;             /* Mantiene la proporción de la imagen */
     border-radius: 5px;
 }
 
@@ -168,15 +169,18 @@ td {
 }
 
 
-/* Estilos Contacto*/
+/* Estilos Contacto */
 .container_contacto {
     border-radius: 5px;
-    background-color: #8f8f8f;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1%;
-    max-width: 40%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     text-align: left;
+    margin-bottom: 1rem;
+    color:white;
 }
 
 .container_contacto label {
@@ -184,6 +188,7 @@ td {
 }
 
 input[type=text],
+input[type=password],
 input[type=tel],
 select,
 textarea {
@@ -192,14 +197,9 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-top: 2%;
-    margin-bottom: 2%;
     resize: vertical;
-}
-
-textarea {
-    height: 7rem;
-    /* Cambia este valor al tamaño que prefieras */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 input[type=submit] {
@@ -223,7 +223,7 @@ input[type=submit]:hover {
     /* Asegura que el contenedor adicional ocupe el ancho completo */
 }
 
-.fondo_contacto {
+.fondo-contacto {
     background-image: url('../Img/fondo.jpg');
     background-size: cover;
     background-position: center;
@@ -338,7 +338,6 @@ a {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo semitransparente */
 }
 
 .modal-content {
@@ -385,6 +384,213 @@ a {
     /* Sombra para darle profundidad */
     width: 50%;
 }
+
+/* Estilos generales para el panel de administración */
+.admin-panel {
+    background-color: #988e8e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-presentacion{ 
+justify-content: center;
+display: flex;
+flex-direction: column;
+align-items: center; 
+justify-content: center;
+gap: 1rem; 
+margin: 2rem auto;
+padding: 1rem;
+width: 60%;
+background-color: #f4f4f4;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+}
+
+.form-section{
+    width: 50rem;
+    align-items: center;
+}
+
+button[type=submit] {
+    background-color: #4d0344;
+    color: white;
+    padding: 2% 4%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type=submit]:hover {
+    background-color: #37043b;
+}
+
+
+.section-servicios{ 
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 0.5rem; 
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 60%;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    }
+
+
+/* Estilos para las tablas de admin*/
+.admin-table {
+    width: 80%; 
+    margin: 1rem auto; 
+    border-collapse: collapse; 
+    background-color: #f9f9f9; 
+}
+
+/* Estilos para las celdas de la tabla */
+.admin-table th, .admin-table td {
+    padding: 1rem; 
+    text-align: left; 
+    border: 1px solid #868282;
+}
+
+/* Encabezado de la tabla */
+.admin-table th {
+    background-color: #e0e0e0; 
+    color: #333; 
+    font-weight: bold; 
+}
+
+/* Filas impares con un color gris más claro */
+.admin-table tr:nth-child(odd) {
+    background-color: #f5f5f5; 
+}
+
+/* Filas pares con un color gris suave */
+.admin-table tr:nth-child(even) {
+    background-color: #ffffff; 
+}
+
+
+/* Estilos para la sección de recetas */
+.section-recetas {
+    gap: 0.5rem; 
+    margin: 2rem auto;
+    padding: 1%;
+    width: 60%;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+/*Estilos editar-crear-receta*/
+
+.editar-crear-receta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    padding: 1rem;
+    max-width: 60rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 40rem;
+}
+
+.editar-crear-receta label,
+.editar-crear-receta input[type="text"],
+.editar-crear-receta textarea,
+.editar-crear-receta input[type="file"],
+.editar-crear-receta button {
+    max-width: 40rem;
+}
+
+.editar-crear-receta img {
+    border-radius: 5px;
+}
+
+.btn-volver{
+margin: 1rem;
+}
+
+.btn-cerrar-sesion{
+margin-bottom: 1rem;
+width: 10rem;
+}
+
+/*LOGIN*/
+/* Estilo para el contenedor del formulario */
+.login-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo gris con opacidad */
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 25rem; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Estilo para los campos del formulario */
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+.section-consultas{ 
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 0.5rem; 
+    margin: 30px auto;
+    padding: 1rem;
+    width: 60%;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    }
+
+.fondo-login {
+    background-image: url('../Img/fondoLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.section-presentacion textarea, [type=text]{
+    width: 80%;
+    padding: 1%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f4f4f4;
+}
+
+.section-servicios input[type=text]{
+    width: 80%;
+    padding: 1%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+    
 
 /* Ajustes generales para pantallas más pequeñas (móviles) */
 @media (max-width: 768px) {
@@ -434,6 +640,16 @@ a {
     .receta-img {
         max-width: 30%;
     }
+
+    
+.section-presentacion textarea, [type=text]{
+    width: 50%;
+}
+
+.section-servicios input[type=text]{
+    width: 50%;
+}
+
 }
 
 
@@ -465,4 +681,14 @@ a {
     .receta-img {
         max-width: 30%;
     }
+
+    .section-presentacion textarea, [type=text]{
+        width: 60%;
+    }
+    
+    .section-servicios input[type=text]{
+        width: 60%;
+    }
+    
+
 }
