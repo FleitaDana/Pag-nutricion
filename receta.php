@@ -2,25 +2,25 @@
 
 include 'php/conexion.php';
 
-// Obtener el título de la receta desde la URL
- $titulo = isset($_GET['titulo']) ? $conn->real_escape_string($_GET['titulo']) : null; // Escapa el título para evitar inyecciones SQL
+// Obtenemos el título de la receta desde la URL
+$titulo = isset($_GET['titulo']) ? $conn->real_escape_string($_GET['titulo']) : null; // Escapamos el título para evitar inyecciones SQL
 
-// Verificar que se haya recibido un título
+// Verificamos que se haya recibido un título
 if (!$titulo) {
     die("No se ha especificado una receta."); // Termina el script y muestra un mensaje de error
 }
 
-// Consultar la receta específica usando el título pasado por la URL
+// Consultamos la receta específica usando el título pasado por la URL
 $sql = "SELECT titulo, subtitulo, ingredientes, pasos_a_seguir, imagen_url FROM Receta WHERE titulo = '$titulo'";
-$result = $conn->query($sql); // Ejecuta la consulta en la base de datos
+$result = $conn->query($sql); // Ejecutamos la consulta en la base de datos
 
-// Verificar si hubo un error en la consulta
+// Verificamos si hubo un error en la consulta
 if (!$result || $result->num_rows == 0) {
-    die("Error o receta no encontrada."); // Termina el script y muestra un mensaje de error
+    die("Error o receta no encontrada."); // Terminamos el script y muestra un mensaje de error
 }
 
-// Obtener la receta
-$receta = $result->fetch_assoc(); // Obtiene los resultados de la consulta como un array asociativo
+// Obtenemos la receta
+$receta = $result->fetch_assoc(); // Obtenemos los resultados de la consulta como un array asociativo
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $receta = $result->fetch_assoc(); // Obtiene los resultados de la consulta como 
         </nav>
     </header>
 
-    <!-- Inicia la sección principal para mostrar la resceta -->
+    <!-- Inicia la sección principal para mostrar la receta -->
     <main class="receta-container">
         <img src="<?php echo $receta['imagen_url']; ?>" alt="Imagen de <?php echo $receta['titulo']; ?>" class="receta-img">
         <div class="receta-contenido">
@@ -56,7 +56,7 @@ $receta = $result->fetch_assoc(); // Obtiene los resultados de la consulta como 
             <h2>Ingredientes:</h2>
             <ul>
                 <?php
-                // Convertir ingredientes en un array y mostrar
+                // Convertimos los ingredientes en un array y mostrar
                 $ingredientes = explode(',', $receta['ingredientes']);
                 foreach ($ingredientes as $ingrediente) {
                     echo '<li>' . trim($ingrediente) . '</li>';
@@ -67,7 +67,7 @@ $receta = $result->fetch_assoc(); // Obtiene los resultados de la consulta como 
             <h2>Cómo preparar <?php echo strtolower($receta['titulo']); ?>, paso a paso</h2>
             <ol>
                 <?php
-                // Convertir pasos en un array y mostrar
+                // Convertimos pasos en un array y mostrar
                 $pasos = explode(',', $receta['pasos_a_seguir']);
                 foreach ($pasos as $paso) {
                     echo '<li>' . trim($paso) . '</li>';

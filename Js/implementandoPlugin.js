@@ -1,4 +1,5 @@
 /*Implementacion del plugin jQuey Validation */
+
 $(document).ready(function() {
     $("#formularioContacto").validate({
         rules: {
@@ -21,16 +22,16 @@ $(document).ready(function() {
                 minlength: "Su apellido debe tener al menos 2 caracteres"
             }
         },
-        errorElement: "span", // Cambia el elemento predeterminado a <span>
+        errorElement: "span", // Cambiamos el elemento predeterminado a <span>
         errorPlacement: function(error, element) {
-            error.addClass("validar-datos"); // Solo agrega la clase al mensaje de error
-            error.insertAfter(element); // Coloca el mensaje después del input correspondiente
+            error.addClass("validar-datos"); // Solo agregamos la clase al mensaje de error
+            error.insertAfter(element); // Colocamos el mensaje después del input correspondiente
         },
         highlight: function(element) {
-            $(element).removeClass("validar-datos"); // Remueve la clase del input, si se aplica por error
+            $(element).removeClass("validar-datos"); // Removemos la clase del input, si se aplica por error
         },
         unhighlight: function(element) {
-            $(element).removeClass("validar-datos"); // Asegura que el input no reciba la clase
+            $(element).removeClass("validar-datos"); // Asegurmos que el input no reciba la clase
         }
     });
 });

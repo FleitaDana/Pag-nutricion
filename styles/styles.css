@@ -89,7 +89,6 @@ td {
 .servicios tr td:hover {
     background-color: #e2be92;
     transform: scale(1.05);
-    /* Agranda ligeramente el elemento */
 }
 
 
@@ -140,7 +139,7 @@ td {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si es necesario */
     justify-content: space-between;
-    gap: 2rem; /* Espaciado entre los elementos */
+    gap: 2rem; 
     padding: 0 2% 2% 2%;
     margin-top: 0;
     margin-left: 2%;
@@ -154,8 +153,8 @@ td {
     padding: 1%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 12rem;         /* Limitar el ancho máximo */
-    flex-shrink: 0;           /* Evitar que se reduzca */
+    max-width: 12rem;       
+    flex-shrink: 0;           
 }
 
 .recetas-box img {
@@ -218,9 +217,7 @@ input[type=submit]:hover {
 .boton-enviar {
     display: flex;
     justify-content: center;
-    /* Centra el botón horizontalmente */
     width: 100%;
-    /* Asegura que el contenedor adicional ocupe el ancho completo */
 }
 
 .fondo-contacto {
@@ -229,7 +226,6 @@ input[type=submit]:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* Mantiene la imagen fija en su lugar cuando se desplaza el contenido */
 }
 
 /* Estilos para el carrusel */
@@ -329,7 +325,6 @@ a {
 /* Estilos para el modal */
 .modal {
     display: none;
-    /* Oculto por defecto */
     position: fixed;
     z-index: 1;
     /* Para estar por encima del contenido */
@@ -381,7 +376,6 @@ a {
     display: inline-block;
     /* Para que se comporte como una etiqueta */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Sombra para darle profundidad */
     width: 50%;
 }
 
@@ -526,6 +520,7 @@ width: 10rem;
 }
 
 /*LOGIN*/
+
 /* Estilo para el contenedor del formulario */
 .login-container {
     background-color: rgba(0, 0, 0, 0.8); /* Fondo gris con opacidad */

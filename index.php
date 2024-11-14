@@ -1,18 +1,17 @@
 <?php 
 include 'php/conexion.php'; 
 
-// Query to get the presentation text
-$sql = "SELECT presentacion FROM Usuario WHERE id_usuario = 1"; // Replace 1 with the appropriate user ID if needed
+// Consultamos para obtener el texto de presentación
+$sql = "SELECT presentacion FROM Usuario WHERE id_usuario = 1"; // Reemplazamos 1 con el ID de usuario adecuado si es necesario
 $result = $conn->query($sql);
 
-// Check if the query returned any result
+// Verificamos si la consulta devolvió algún resultado
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $presentacion = $row['presentacion'];
 } else {
-    $presentacion = "No se encontró presentación."; // Default message if no presentation is found
+    $presentacion = "No se encontró presentación."; // Mensaje predeterminado si no se encuentra la presentación
 }
-
 
 $sql = "SELECT tipo FROM Servicio"; 
 $result = $conn->query($sql);
@@ -55,8 +54,9 @@ $conn->close();
     </header>
 
     <main>
+        
         <!-- Sección Portada -->
-        <h1>¡Hola, soy Lara</h1>
+        <h1>¡Hola soy Lara!</h1>
         <h2>Nutricionista Graduada</h2>
 
         <!-- Sección Carrusel -->
@@ -79,10 +79,10 @@ $conn->close();
         </section>
 
         <section class="sobreMi">
-        <div class="cover-text">
-        <!-- Display the fetched 'presentacion' -->
-        <h3><?php echo htmlspecialchars($presentacion); ?></h3>
-    </div>
+            <div class="cover-text">
+                <!-- Mostrar el texto de 'presentacion' obtenido -->
+                <h3><?php echo htmlspecialchars($presentacion); ?></h3>
+            </div>
         </section>
 
         <!-- Sección Servicios -->
@@ -125,6 +125,5 @@ $conn->close();
     <script src="js/carrusel.js"></script>
 
 </body>
-
 
 </html>
